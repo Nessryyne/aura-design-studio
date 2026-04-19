@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { LoginScreen } from "@/components/screens/LoginScreen";
@@ -53,9 +53,12 @@ function Index() {
           <span>Journal</span>
           <span>About</span>
         </nav>
-        <button className="rounded-full bg-foreground text-background px-4 py-2 text-xs tracking-wide">
-          Download
-        </button>
+        <Link
+          to="/signin"
+          className="rounded-full bg-foreground text-background px-4 py-2 text-xs tracking-wide"
+        >
+          Open app →
+        </Link>
       </header>
 
       {/* Hero */}
@@ -76,12 +79,18 @@ function Index() {
             considered, every gesture refined. A companion worthy of the words it carries.
           </p>
           <div className="flex items-center gap-4 pt-2">
-            <button className="rounded-full bg-gradient-gold px-6 py-3 text-sm font-medium text-foreground shadow-gold">
+            <Link
+              to="/signin"
+              className="rounded-full bg-gradient-gold px-6 py-3 text-sm font-medium text-foreground shadow-gold"
+            >
               Try the experience
-            </button>
-            <button className="text-sm text-emerald-deep underline-offset-4 hover:underline">
-              Read the design notes →
-            </button>
+            </Link>
+            <Link
+              to="/signin"
+              className="text-sm text-emerald-deep underline-offset-4 hover:underline"
+            >
+              Sign in / Sign up →
+            </Link>
           </div>
 
           <dl className="grid grid-cols-3 gap-6 pt-8 border-t border-foreground/10">
