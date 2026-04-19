@@ -61,6 +61,17 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-emerald: var(--emerald);
+  --color-emerald-deep: var(--emerald-deep);
+  --color-emerald-soft: var(--emerald-soft);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-light: var(--gold-light);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-arabic: var(--font-arabic);
 }
 
 :root {
@@ -163,7 +174,35 @@
   }
 
   body {
-    background-color: var(--color-background);
+    background: var(--gradient-page);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-gold { background: var(--gradient-gold); }
+  .bg-gradient-emerald { background: var(--gradient-emerald); }
+  .bg-gradient-cream { background: var(--gradient-cream); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-elevated { box-shadow: var(--shadow-elevated); }
+  .shadow-gold { box-shadow: var(--shadow-gold); }
+  .shadow-phone { box-shadow: var(--shadow-phone); }
+  .text-gold-gradient {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .arabesque {
+    background-image:
+      radial-gradient(circle at 20% 30%, oklch(0.78 0.12 80 / 0.10) 0, transparent 35%),
+      radial-gradient(circle at 80% 70%, oklch(0.42 0.09 160 / 0.08) 0, transparent 40%);
   }
 }
