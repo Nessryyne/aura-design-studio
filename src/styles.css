@@ -2,6 +2,8 @@
 @source "../src";
 @import "tw-animate-css";
 
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap");
+
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -62,21 +64,44 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 1rem;
+  /* Cream + emerald + gold palette */
+  --background: oklch(0.975 0.018 85);           /* warm ivory */
+  --foreground: oklch(0.22 0.04 160);            /* deep emerald-ink */
+  --surface: oklch(0.99 0.012 85);
+  --surface-2: oklch(0.955 0.022 85);
+  --emerald: oklch(0.42 0.09 160);
+  --emerald-deep: oklch(0.28 0.07 160);
+  --emerald-soft: oklch(0.62 0.08 160);
+  --gold: oklch(0.78 0.12 80);
+  --gold-deep: oklch(0.68 0.13 70);
+  --gold-light: oklch(0.88 0.08 85);
+
+  --gradient-gold: linear-gradient(135deg, oklch(0.85 0.10 85) 0%, oklch(0.72 0.14 75) 50%, oklch(0.62 0.13 65) 100%);
+  --gradient-emerald: linear-gradient(160deg, oklch(0.32 0.08 160) 0%, oklch(0.22 0.06 160) 100%);
+  --gradient-cream: linear-gradient(180deg, oklch(0.985 0.015 85) 0%, oklch(0.955 0.022 80) 100%);
+  --gradient-page: radial-gradient(ellipse at top, oklch(0.97 0.02 85) 0%, oklch(0.93 0.025 80) 100%);
+
+  --shadow-soft: 0 1px 2px oklch(0.3 0.05 160 / 0.04), 0 8px 24px -8px oklch(0.3 0.05 160 / 0.10);
+  --shadow-elevated: 0 2px 4px oklch(0.3 0.05 160 / 0.06), 0 24px 48px -12px oklch(0.3 0.05 160 / 0.18);
+  --shadow-gold: 0 8px 32px -8px oklch(0.72 0.14 75 / 0.45);
+  --shadow-phone: 0 30px 80px -20px oklch(0.2 0.04 160 / 0.35), 0 10px 30px -10px oklch(0.2 0.04 160 / 0.2);
+
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Amiri", "Cormorant Garamond", serif;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --primary: oklch(0.32 0.08 160);
+  --primary-foreground: oklch(0.985 0.015 85);
+  --secondary: oklch(0.94 0.025 85);
+  --secondary-foreground: oklch(0.28 0.07 160);
+  --muted: oklch(0.94 0.022 85);
+  --muted-foreground: oklch(0.48 0.04 160);
+  --accent: oklch(0.78 0.12 80);
+  --accent-foreground: oklch(0.22 0.06 160);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.929 0.013 255.508);
