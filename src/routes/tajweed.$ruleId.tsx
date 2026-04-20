@@ -1,4 +1,4 @@
-import { createFileRoute, Link, redirect, useNavigate, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { getSession, updateSession } from "@/lib/auth";
@@ -22,9 +22,9 @@ export const Route = createFileRoute("/tajweed/$ruleId")({
       const s = getSession();
       if (!s) throw redirect({ to: "/signin" });
       if (!s.onboarded) throw redirect({ to: "/onboarding" });
+      const exists = TAJWEED_RULES.some((r) => r.id === params.ruleId);
+      if (!exists) throw redirect({ to: "/tajweed" });
     }
-    const exists = TAJWEED_RULES.some((r) => r.id === params.ruleId);
-    if (!exists) throw notFound();
   },
   notFoundComponent: () => (
     <AppShell>
@@ -65,6 +65,10 @@ function Lesson() {
   };
 
   const markCompleteAndContinue = () => {
+    if (rule.id === "ghunnah") {
+      navigate({ to: "/tajweed/ghunnah/practice" });
+      return;
+    }
     const s = getSession();
     if (s) {
       const set = new Set(s.completedRules ?? []);
