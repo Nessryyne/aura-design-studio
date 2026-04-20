@@ -76,7 +76,7 @@ function Onboarding() {
           {step === "goal" && (
             <Pick
               kicker="Your intention"
-              title="What brings you to Noor?"
+              title="What brings you to Tajweed?"
               options={GOALS}
               value={goal}
               onPick={(v) => {
