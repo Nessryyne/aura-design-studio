@@ -14,6 +14,7 @@ export interface Session {
   reciter?: string;
   minutes?: number;
   completedRules?: string[];
+  readingTested?: boolean;
 }
 
 export function getSession(): Session | null {
