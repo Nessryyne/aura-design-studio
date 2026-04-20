@@ -6,8 +6,8 @@ import { getSession, updateSession, type Level } from "@/lib/auth";
 export const Route = createFileRoute("/onboarding")({
   head: () => ({
     meta: [
-      { title: "Get started — Noor" },
-      { name: "description", content: "Set up your Noor experience." },
+      { title: "Get started — Tajweed" },
+      { name: "description", content: "Set up your Tajweed experience." },
     ],
   }),
   beforeLoad: () => {

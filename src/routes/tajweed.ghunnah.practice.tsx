@@ -6,7 +6,7 @@ import { getSession, updateSession } from "@/lib/auth";
 export const Route = createFileRoute("/tajweed/ghunnah/practice")({
   head: () => ({
     meta: [
-      { title: "Al-Ghunnah practice — Noor" },
+      { title: "Al-Ghunnah practice — Tajweed" },
       { name: "description", content: "Practice the Ghunnah nasal sound with live feedback." },
     ],
   }),

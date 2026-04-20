@@ -7,8 +7,8 @@ import { TAJWEED_RULES } from "@/lib/tajweed-data";
 export const Route = createFileRoute("/home")({
   head: () => ({
     meta: [
-      { title: "Home — Noor" },
-      { name: "description", content: "Your daily Noor dashboard." },
+      { title: "Home — Tajweed" },
+      { name: "description", content: "Your daily Tajweed dashboard." },
     ],
   }),
   beforeLoad: () => {

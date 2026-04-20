@@ -7,7 +7,7 @@ import { TAJWEED_RULES } from "@/lib/tajweed-data";
 export const Route = createFileRoute("/tajweed/")({
   head: () => ({
     meta: [
-      { title: "Tajweed lessons — Noor" },
+      { title: "Tajweed lessons" },
       { name: "description", content: "Learn the rules of Tajweed step by step." },
     ],
   }),
