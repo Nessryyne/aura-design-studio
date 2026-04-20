@@ -17,7 +17,7 @@ export const Route = createFileRoute("/tajweed/$ruleId")({
       ],
     };
   },
-  beforeLoad: (({ params }) => {
+  beforeLoad: (({ params }: { params: { ruleId: string } }) => {
     if (typeof window === "undefined") return;
     const s = getSession();
     if (!s) throw redirect({ to: "/signin" });
