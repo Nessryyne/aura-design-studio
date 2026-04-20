@@ -24,6 +24,10 @@ export const Route = createFileRoute("/tajweed/$ruleId")({
     if (!s.onboarded) throw redirect({ to: "/onboarding" });
     const exists = TAJWEED_RULES.some((r) => r.id === params.ruleId);
     if (!exists) throw redirect({ to: "/tajweed" });
+    // Ghunnah lesson goes straight to the live practice screen
+    if (params.ruleId === "ghunnah") {
+      throw redirect({ to: "/tajweed/ghunnah/practice" });
+    }
   }) as never,
   notFoundComponent: () => (
     <AppShell>
