@@ -23,7 +23,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-10">
         <PhoneFrame>{children}</PhoneFrame>
         <p className="mt-6 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-          Noor · Demo experience
+          Tajweed · Demo experience
         </p>
       </div>
     </main>
