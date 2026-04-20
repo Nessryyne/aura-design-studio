@@ -18,13 +18,12 @@ export const Route = createFileRoute("/tajweed/$ruleId")({
     };
   },
   beforeLoad: ({ params }) => {
-    if (typeof window !== "undefined") {
-      const s = getSession();
-      if (!s) throw redirect({ to: "/signin" });
-      if (!s.onboarded) throw redirect({ to: "/onboarding" });
-      const exists = TAJWEED_RULES.some((r) => r.id === params.ruleId);
-      if (!exists) throw redirect({ to: "/tajweed" });
-    }
+    if (typeof window === "undefined") return;
+    const s = getSession();
+    if (!s) throw redirect({ to: "/signin" });
+    if (!s.onboarded) throw redirect({ to: "/onboarding" });
+    const exists = TAJWEED_RULES.some((r) => r.id === params.ruleId);
+    if (!exists) throw redirect({ to: "/tajweed" });
   },
   notFoundComponent: () => (
     <AppShell>
