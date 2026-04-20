@@ -120,21 +120,29 @@ function ReadingTest() {
         </div>
 
         {/* Footer */}
-        <div className="mt-auto flex items-center justify-between gap-2 px-5 pb-4 pt-4">
+        <div className="mt-auto px-5 pb-4 pt-4 space-y-2">
+          <div className="flex items-center justify-between text-[11px] text-foreground/50">
+            <button
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              className="rounded-full border border-foreground/10 bg-surface px-4 py-1.5 text-foreground/60"
+            >
+              ‹ Prev
+            </button>
+            <span>
+              {page} / {PAGES}
+            </span>
+            <button
+              onClick={() => setPage((p) => Math.min(PAGES, p + 1))}
+              className="rounded-full border border-foreground/10 bg-surface px-4 py-1.5 text-foreground/60"
+            >
+              Next ›
+            </button>
+          </div>
           <button
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
-            className="rounded-full border border-foreground/10 bg-surface px-4 py-2 text-[11px] text-foreground/60"
+            onClick={finish}
+            className="w-full rounded-2xl bg-gradient-emerald py-3 text-sm font-medium text-background shadow-elevated transition-transform active:scale-[0.98]"
           >
-            ‹ Prev
-          </button>
-          <p className="text-[11px] text-foreground/50">
-            {page} / {PAGES}
-          </p>
-          <button
-            onClick={done ? finish : () => setPage((p) => Math.min(PAGES, p + 1))}
-            className="rounded-full bg-gradient-emerald px-4 py-2 text-[11px] font-medium text-background shadow-elevated"
-          >
-            {done ? "Continue →" : "Next ›"}
+            Continue to dashboard →
           </button>
         </div>
       </div>
