@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { AppShell } from "@/components/AppShell";
-import { signInMock, getSession } from "@/lib/auth";
+import { signInMock } from "@/lib/auth";
 
 export const Route = createFileRoute("/signin")({
   head: () => ({
