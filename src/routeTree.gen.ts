@@ -10,15 +10,22 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SigninRouteImport } from './routes/signin'
+import { Route as ReadingTestRouteImport } from './routes/reading-test'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TajweedIndexRouteImport } from './routes/tajweed.index'
 import { Route as TajweedRuleIdRouteImport } from './routes/tajweed.$ruleId'
+import { Route as TajweedGhunnahPracticeRouteImport } from './routes/tajweed.ghunnah.practice'
 
 const SigninRoute = SigninRouteImport.update({
   id: '/signin',
   path: '/signin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReadingTestRoute = ReadingTestRouteImport.update({
+  id: '/reading-test',
+  path: '/reading-test',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnboardingRoute = OnboardingRouteImport.update({
@@ -46,31 +53,42 @@ const TajweedRuleIdRoute = TajweedRuleIdRouteImport.update({
   path: '/tajweed/$ruleId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TajweedGhunnahPracticeRoute = TajweedGhunnahPracticeRouteImport.update({
+  id: '/tajweed/ghunnah/practice',
+  path: '/tajweed/ghunnah/practice',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
+  '/reading-test': typeof ReadingTestRoute
   '/signin': typeof SigninRoute
   '/tajweed/$ruleId': typeof TajweedRuleIdRoute
   '/tajweed/': typeof TajweedIndexRoute
+  '/tajweed/ghunnah/practice': typeof TajweedGhunnahPracticeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
+  '/reading-test': typeof ReadingTestRoute
   '/signin': typeof SigninRoute
   '/tajweed/$ruleId': typeof TajweedRuleIdRoute
   '/tajweed': typeof TajweedIndexRoute
+  '/tajweed/ghunnah/practice': typeof TajweedGhunnahPracticeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
+  '/reading-test': typeof ReadingTestRoute
   '/signin': typeof SigninRoute
   '/tajweed/$ruleId': typeof TajweedRuleIdRoute
   '/tajweed/': typeof TajweedIndexRoute
+  '/tajweed/ghunnah/practice': typeof TajweedGhunnahPracticeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -78,34 +96,42 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/onboarding'
+    | '/reading-test'
     | '/signin'
     | '/tajweed/$ruleId'
     | '/tajweed/'
+    | '/tajweed/ghunnah/practice'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/home'
     | '/onboarding'
+    | '/reading-test'
     | '/signin'
     | '/tajweed/$ruleId'
     | '/tajweed'
+    | '/tajweed/ghunnah/practice'
   id:
     | '__root__'
     | '/'
     | '/home'
     | '/onboarding'
+    | '/reading-test'
     | '/signin'
     | '/tajweed/$ruleId'
     | '/tajweed/'
+    | '/tajweed/ghunnah/practice'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRoute: typeof HomeRoute
   OnboardingRoute: typeof OnboardingRoute
+  ReadingTestRoute: typeof ReadingTestRoute
   SigninRoute: typeof SigninRoute
   TajweedRuleIdRoute: typeof TajweedRuleIdRoute
   TajweedIndexRoute: typeof TajweedIndexRoute
+  TajweedGhunnahPracticeRoute: typeof TajweedGhunnahPracticeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -115,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/signin'
       fullPath: '/signin'
       preLoaderRoute: typeof SigninRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reading-test': {
+      id: '/reading-test'
+      path: '/reading-test'
+      fullPath: '/reading-test'
+      preLoaderRoute: typeof ReadingTestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/onboarding': {
@@ -152,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TajweedRuleIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tajweed/ghunnah/practice': {
+      id: '/tajweed/ghunnah/practice'
+      path: '/tajweed/ghunnah/practice'
+      fullPath: '/tajweed/ghunnah/practice'
+      preLoaderRoute: typeof TajweedGhunnahPracticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -159,9 +199,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRoute: HomeRoute,
   OnboardingRoute: OnboardingRoute,
+  ReadingTestRoute: ReadingTestRoute,
   SigninRoute: SigninRoute,
   TajweedRuleIdRoute: TajweedRuleIdRoute,
   TajweedIndexRoute: TajweedIndexRoute,
+  TajweedGhunnahPracticeRoute: TajweedGhunnahPracticeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

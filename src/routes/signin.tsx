@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { AppShell } from "@/components/AppShell";
-import { signInMock, getSession } from "@/lib/auth";
+import { signInMock } from "@/lib/auth";
 
 export const Route = createFileRoute("/signin")({
   head: () => ({
@@ -24,14 +24,14 @@ function SignInPage() {
     e.preventDefault();
     if (!email || !password) return;
     const s = signInMock(email, mode === "signup" ? name || undefined : undefined);
-    const existing = getSession();
-    // Always force onboarding for new sign-ups; keep existing flag otherwise
-    if (mode === "signup" || !existing?.onboarded) {
+    // Reading test first, then onboarding, then home
+    if (mode === "signup" || !s.readingTested) {
+      navigate({ to: "/reading-test" });
+    } else if (!s.onboarded) {
       navigate({ to: "/onboarding" });
     } else {
       navigate({ to: "/home" });
     }
-    void s;
   };
 
   return (
