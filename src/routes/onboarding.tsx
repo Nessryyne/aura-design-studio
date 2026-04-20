@@ -18,28 +18,12 @@ export const Route = createFileRoute("/onboarding")({
   component: Onboarding,
 });
 
-type Step = "goal" | "reciter" | "minutes" | "q1" | "q2" | "q3" | "result";
-const STEPS: Step[] = ["goal", "reciter", "minutes", "q1", "q2", "q3", "result"];
+type Step = "goal" | "reciter" | "minutes" | "result";
+const STEPS: Step[] = ["goal", "reciter", "minutes", "result"];
 
 const GOALS = ["Improve recitation", "Learn Tajweed", "Memorise (Hifz)", "Daily habit"];
 const RECITERS = ["Al-Afasy", "Al-Sudais", "Al-Ghamdi", "Al-Husary"];
 const MINUTES = ["5 min", "10 min", "20 min", "30 min+"];
-
-const Q1 = {
-  q: "What does Qalqalah mean?",
-  options: ["Bouncing / echo", "Merging", "Concealment", "Prolongation"],
-  correct: 0,
-};
-const Q2 = {
-  q: "Which letters carry Qalqalah?",
-  options: ["ا و ي", "ق ط ب ج د", "ن م", "ل ر"],
-  correct: 1,
-};
-const Q3 = {
-  q: "How long is a natural Madd held?",
-  options: ["1 count", "2 counts", "4 counts", "6 counts"],
-  correct: 1,
-};
 
 function Onboarding() {
   const navigate = useNavigate();
@@ -47,9 +31,6 @@ function Onboarding() {
   const [goal, setGoal] = useState<string | null>(null);
   const [reciter, setReciter] = useState<string | null>(null);
   const [minutes, setMinutes] = useState<string | null>(null);
-  const [a1, setA1] = useState<number | null>(null);
-  const [a2, setA2] = useState<number | null>(null);
-  const [a3, setA3] = useState<number | null>(null);
 
   const idx = STEPS.indexOf(step);
   const progress = ((idx + 1) / STEPS.length) * 100;
@@ -57,11 +38,7 @@ function Onboarding() {
   const next = () => setStep(STEPS[Math.min(idx + 1, STEPS.length - 1)]);
   const back = () => idx > 0 && setStep(STEPS[idx - 1]);
 
-  const score = [a1, a2, a3].filter(
-    (a, i) => a !== null && a === [Q1, Q2, Q3][i].correct,
-  ).length;
-
-  const level: Level = score >= 3 ? "Advanced" : score === 2 ? "Intermediate" : "Beginner";
+  const level: Level = "Beginner";
 
   const finish = () => {
     updateSession({
