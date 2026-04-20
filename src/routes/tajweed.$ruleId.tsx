@@ -9,10 +9,10 @@ export const Route = createFileRoute("/tajweed/$ruleId")({
     const rule = TAJWEED_RULES.find((r) => r.id === params.ruleId);
     return {
       meta: [
-        { title: rule ? `${rule.name} — Tajweed · Noor` : "Lesson — Noor" },
+        { title: rule ? `${rule.name} — Tajweed` : "Lesson — Tajweed" },
         {
           name: "description",
-          content: rule ? rule.definition : "Learn a Tajweed rule with Noor.",
+          content: rule ? rule.definition : "Learn a Tajweed rule.",
         },
       ],
     };

@@ -6,8 +6,8 @@ import { signInMock } from "@/lib/auth";
 export const Route = createFileRoute("/signin")({
   head: () => ({
     meta: [
-      { title: "Sign in — Noor" },
-      { name: "description", content: "Sign in to your Noor Qur'an companion." },
+      { title: "Sign in — Tajweed" },
+      { name: "description", content: "Sign in to your Tajweed companion." },
     ],
   }),
   component: SignInPage,
