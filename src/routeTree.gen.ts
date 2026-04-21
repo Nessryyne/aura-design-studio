@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as ReadingTestRouteImport } from './routes/reading-test'
+import { Route as QuranRouteImport } from './routes/quran'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as IndexRouteImport } from './routes/index'
@@ -26,6 +27,11 @@ const SigninRoute = SigninRouteImport.update({
 const ReadingTestRoute = ReadingTestRouteImport.update({
   id: '/reading-test',
   path: '/reading-test',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuranRoute = QuranRouteImport.update({
+  id: '/quran',
+  path: '/quran',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnboardingRoute = OnboardingRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
+  '/quran': typeof QuranRoute
   '/reading-test': typeof ReadingTestRoute
   '/signin': typeof SigninRoute
   '/tajweed/$ruleId': typeof TajweedRuleIdRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
+  '/quran': typeof QuranRoute
   '/reading-test': typeof ReadingTestRoute
   '/signin': typeof SigninRoute
   '/tajweed/$ruleId': typeof TajweedRuleIdRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
+  '/quran': typeof QuranRoute
   '/reading-test': typeof ReadingTestRoute
   '/signin': typeof SigninRoute
   '/tajweed/$ruleId': typeof TajweedRuleIdRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/onboarding'
+    | '/quran'
     | '/reading-test'
     | '/signin'
     | '/tajweed/$ruleId'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/onboarding'
+    | '/quran'
     | '/reading-test'
     | '/signin'
     | '/tajweed/$ruleId'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/onboarding'
+    | '/quran'
     | '/reading-test'
     | '/signin'
     | '/tajweed/$ruleId'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRoute: typeof HomeRoute
   OnboardingRoute: typeof OnboardingRoute
+  QuranRoute: typeof QuranRoute
   ReadingTestRoute: typeof ReadingTestRoute
   SigninRoute: typeof SigninRoute
   TajweedRuleIdRoute: typeof TajweedRuleIdRoute
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/reading-test'
       fullPath: '/reading-test'
       preLoaderRoute: typeof ReadingTestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quran': {
+      id: '/quran'
+      path: '/quran'
+      fullPath: '/quran'
+      preLoaderRoute: typeof QuranRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/onboarding': {
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRoute: HomeRoute,
   OnboardingRoute: OnboardingRoute,
+  QuranRoute: QuranRoute,
   ReadingTestRoute: ReadingTestRoute,
   SigninRoute: SigninRoute,
   TajweedRuleIdRoute: TajweedRuleIdRoute,

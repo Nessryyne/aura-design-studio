@@ -52,7 +52,7 @@ function Home() {
       meta: "114 surahs",
       icon: "ﻕ",
       tone: "emerald",
-      to: "/home" as const,
+      to: "/quran" as const,
     },
     {
       id: "daily",

@@ -18,17 +18,15 @@ export const Route = createFileRoute("/onboarding")({
   component: Onboarding,
 });
 
-type Step = "goal" | "reciter" | "minutes" | "result";
-const STEPS: Step[] = ["goal", "reciter", "minutes", "result"];
+type Step = "reciter" | "minutes" | "result";
+const STEPS: Step[] = ["reciter", "minutes", "result"];
 
-const GOALS = ["Improve recitation", "Learn Tajweed", "Memorise (Hifz)", "Daily habit"];
 const RECITERS = ["Al-Afasy", "Al-Sudais", "Al-Ghamdi", "Al-Husary"];
 const MINUTES = ["5 min", "10 min", "20 min", "30 min+"];
 
 function Onboarding() {
   const navigate = useNavigate();
-  const [step, setStep] = useState<Step>("goal");
-  const [goal, setGoal] = useState<string | null>(null);
+  const [step, setStep] = useState<Step>("reciter");
   const [reciter, setReciter] = useState<string | null>(null);
   const [minutes, setMinutes] = useState<string | null>(null);
 
@@ -44,7 +42,6 @@ function Onboarding() {
     updateSession({
       onboarded: true,
       level,
-      goal: goal ?? undefined,
       reciter: reciter ?? undefined,
       minutes: minutes ? parseInt(minutes) : undefined,
     });
@@ -73,18 +70,6 @@ function Onboarding() {
         </div>
 
         <div className="flex-1 overflow-hidden px-6 pt-6">
-          {step === "goal" && (
-            <Pick
-              kicker="Your intention"
-              title="What brings you to Tajweed?"
-              options={GOALS}
-              value={goal}
-              onPick={(v) => {
-                setGoal(v);
-                setTimeout(next, 200);
-              }}
-            />
-          )}
           {step === "reciter" && (
             <Pick
               kicker="Your companion"
