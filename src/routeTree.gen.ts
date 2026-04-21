@@ -13,6 +13,7 @@ import { Route as SigninRouteImport } from './routes/signin'
 import { Route as ReadingTestRouteImport } from './routes/reading-test'
 import { Route as QuranRouteImport } from './routes/quran'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as MemorizationRouteImport } from './routes/memorization'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TajweedIndexRouteImport } from './routes/tajweed.index'
@@ -39,6 +40,11 @@ const QuranRoute = QuranRouteImport.update({
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemorizationRoute = MemorizationRouteImport.update({
+  id: '/memorization',
+  path: '/memorization',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeRoute = HomeRouteImport.update({
@@ -80,6 +86,7 @@ const TajweedGhunnahPracticeRoute = TajweedGhunnahPracticeRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
+  '/memorization': typeof MemorizationRoute
   '/onboarding': typeof OnboardingRoute
   '/quran': typeof QuranRouteWithChildren
   '/reading-test': typeof ReadingTestRoute
@@ -93,6 +100,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
+  '/memorization': typeof MemorizationRoute
   '/onboarding': typeof OnboardingRoute
   '/reading-test': typeof ReadingTestRoute
   '/signin': typeof SigninRoute
@@ -106,6 +114,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
+  '/memorization': typeof MemorizationRoute
   '/onboarding': typeof OnboardingRoute
   '/quran': typeof QuranRouteWithChildren
   '/reading-test': typeof ReadingTestRoute
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/home'
+    | '/memorization'
     | '/onboarding'
     | '/quran'
     | '/reading-test'
@@ -134,6 +144,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/home'
+    | '/memorization'
     | '/onboarding'
     | '/reading-test'
     | '/signin'
@@ -146,6 +157,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/home'
+    | '/memorization'
     | '/onboarding'
     | '/quran'
     | '/reading-test'
@@ -160,6 +172,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRoute: typeof HomeRoute
+  MemorizationRoute: typeof MemorizationRoute
   OnboardingRoute: typeof OnboardingRoute
   QuranRoute: typeof QuranRouteWithChildren
   ReadingTestRoute: typeof ReadingTestRoute
@@ -197,6 +210,13 @@ declare module '@tanstack/react-router' {
       path: '/onboarding'
       fullPath: '/onboarding'
       preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memorization': {
+      id: '/memorization'
+      path: '/memorization'
+      fullPath: '/memorization'
+      preLoaderRoute: typeof MemorizationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home': {
@@ -266,6 +286,7 @@ const QuranRouteWithChildren = QuranRoute._addFileChildren(QuranRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRoute: HomeRoute,
+  MemorizationRoute: MemorizationRoute,
   OnboardingRoute: OnboardingRoute,
   QuranRoute: QuranRouteWithChildren,
   ReadingTestRoute: ReadingTestRoute,
