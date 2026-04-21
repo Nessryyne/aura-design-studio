@@ -2,7 +2,7 @@ import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
 import { getSession } from "@/lib/auth";
 
-export const Route = createFileRoute("/quran")({
+export const Route = createFileRoute("/quran/")({
   head: () => ({
     meta: [
       { title: "Qur'an library — Tajweed" },
