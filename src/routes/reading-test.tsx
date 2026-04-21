@@ -23,25 +23,27 @@ function ReadingTest() {
 
   const finish = () => {
     updateSession({ readingTested: true } as never);
-    navigate({ to: "/home" });
+    const s = getSession();
+    if (s && !s.onboarded) navigate({ to: "/onboarding" });
+    else navigate({ to: "/home" });
   };
 
   return (
     <AppShell>
       <div className="flex h-full flex-col">
-        <div className="px-6 pt-8 pb-5">
+        <div className="px-6 pt-10 pb-8">
           <p className="text-[10px] uppercase tracking-widest text-emerald">
             Reading test
           </p>
-          <h1 className="mt-4 font-serif text-2xl leading-tight text-foreground">
+          <h1 className="mt-5 font-serif text-2xl leading-tight text-foreground">
             Recite this page aloud
           </h1>
-          <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground">
             Take your time — we'll listen and tune your level.
           </p>
         </div>
 
-        <div className="flex-1 overflow-hidden px-5 pt-2 pb-6">
+        <div className="flex-1 overflow-hidden px-5 pt-4 pb-8">
           <div className="h-full overflow-hidden rounded-3xl border border-gold/30 shadow-elevated bg-gradient-cream">
             <img
               src={mockup}
@@ -51,12 +53,12 @@ function ReadingTest() {
           </div>
         </div>
 
-        <div className="px-5 pb-8 pt-4">
+        <div className="px-5 pb-10 pt-6">
           <button
             onClick={finish}
             className="w-full rounded-2xl bg-gradient-emerald py-3.5 text-sm font-medium text-background shadow-elevated transition-transform active:scale-[0.98]"
           >
-            Continue to dashboard →
+            Continue →
           </button>
         </div>
       </div>
