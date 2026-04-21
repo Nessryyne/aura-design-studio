@@ -55,12 +55,12 @@ function Home() {
       to: "/quran" as const,
     },
     {
-      id: "daily",
-      title: "Daily recitation",
-      meta: "Verse of the day",
+      id: "memorization",
+      title: "Memorization techniques",
+      meta: "Hifz companion",
       icon: "✦",
       tone: "cream",
-      to: "/home" as const,
+      to: "/memorization" as const,
     },
     {
       id: "progress",
