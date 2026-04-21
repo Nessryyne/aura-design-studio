@@ -90,9 +90,11 @@ function QuranLibrary() {
         <div className="flex-1 overflow-y-auto mt-2 px-5 pb-5">
           <div className="space-y-2">
             {SURAHS.map((s) => (
-              <div
+              <Link
                 key={s.n}
-                className="flex items-center gap-3 rounded-2xl bg-surface/70 px-3 py-2.5 border border-foreground/5"
+                to="/quran/$surahId"
+                params={{ surahId: String(s.n) }}
+                className="flex items-center gap-3 rounded-2xl bg-surface/70 px-3 py-2.5 border border-foreground/5 hover:bg-surface transition-colors"
               >
                 <div className="relative h-9 w-9 grid place-items-center">
                   <svg viewBox="0 0 40 40" className="absolute inset-0">
@@ -110,7 +112,7 @@ function QuranLibrary() {
                   <p className="text-[10px] text-muted-foreground">{s.meta}</p>
                 </div>
                 <span className="font-arabic text-lg text-emerald-deep">{s.ar}</span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

@@ -17,6 +17,7 @@ import { Route as HomeRouteImport } from './routes/home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TajweedIndexRouteImport } from './routes/tajweed.index'
 import { Route as TajweedRuleIdRouteImport } from './routes/tajweed.$ruleId'
+import { Route as QuranSurahIdRouteImport } from './routes/quran.$surahId'
 import { Route as TajweedGhunnahPracticeRouteImport } from './routes/tajweed.ghunnah.practice'
 
 const SigninRoute = SigninRouteImport.update({
@@ -59,6 +60,11 @@ const TajweedRuleIdRoute = TajweedRuleIdRouteImport.update({
   path: '/tajweed/$ruleId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuranSurahIdRoute = QuranSurahIdRouteImport.update({
+  id: '/$surahId',
+  path: '/$surahId',
+  getParentRoute: () => QuranRoute,
+} as any)
 const TajweedGhunnahPracticeRoute = TajweedGhunnahPracticeRouteImport.update({
   id: '/tajweed/ghunnah/practice',
   path: '/tajweed/ghunnah/practice',
@@ -69,9 +75,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
-  '/quran': typeof QuranRoute
+  '/quran': typeof QuranRouteWithChildren
   '/reading-test': typeof ReadingTestRoute
   '/signin': typeof SigninRoute
+  '/quran/$surahId': typeof QuranSurahIdRoute
   '/tajweed/$ruleId': typeof TajweedRuleIdRoute
   '/tajweed/': typeof TajweedIndexRoute
   '/tajweed/ghunnah/practice': typeof TajweedGhunnahPracticeRoute
@@ -80,9 +87,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
-  '/quran': typeof QuranRoute
+  '/quran': typeof QuranRouteWithChildren
   '/reading-test': typeof ReadingTestRoute
   '/signin': typeof SigninRoute
+  '/quran/$surahId': typeof QuranSurahIdRoute
   '/tajweed/$ruleId': typeof TajweedRuleIdRoute
   '/tajweed': typeof TajweedIndexRoute
   '/tajweed/ghunnah/practice': typeof TajweedGhunnahPracticeRoute
@@ -92,9 +100,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
-  '/quran': typeof QuranRoute
+  '/quran': typeof QuranRouteWithChildren
   '/reading-test': typeof ReadingTestRoute
   '/signin': typeof SigninRoute
+  '/quran/$surahId': typeof QuranSurahIdRoute
   '/tajweed/$ruleId': typeof TajweedRuleIdRoute
   '/tajweed/': typeof TajweedIndexRoute
   '/tajweed/ghunnah/practice': typeof TajweedGhunnahPracticeRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/quran'
     | '/reading-test'
     | '/signin'
+    | '/quran/$surahId'
     | '/tajweed/$ruleId'
     | '/tajweed/'
     | '/tajweed/ghunnah/practice'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/quran'
     | '/reading-test'
     | '/signin'
+    | '/quran/$surahId'
     | '/tajweed/$ruleId'
     | '/tajweed'
     | '/tajweed/ghunnah/practice'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/quran'
     | '/reading-test'
     | '/signin'
+    | '/quran/$surahId'
     | '/tajweed/$ruleId'
     | '/tajweed/'
     | '/tajweed/ghunnah/practice'
@@ -139,7 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRoute: typeof HomeRoute
   OnboardingRoute: typeof OnboardingRoute
-  QuranRoute: typeof QuranRoute
+  QuranRoute: typeof QuranRouteWithChildren
   ReadingTestRoute: typeof ReadingTestRoute
   SigninRoute: typeof SigninRoute
   TajweedRuleIdRoute: typeof TajweedRuleIdRoute
@@ -205,6 +217,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TajweedRuleIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quran/$surahId': {
+      id: '/quran/$surahId'
+      path: '/$surahId'
+      fullPath: '/quran/$surahId'
+      preLoaderRoute: typeof QuranSurahIdRouteImport
+      parentRoute: typeof QuranRoute
+    }
     '/tajweed/ghunnah/practice': {
       id: '/tajweed/ghunnah/practice'
       path: '/tajweed/ghunnah/practice'
@@ -215,11 +234,21 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface QuranRouteChildren {
+  QuranSurahIdRoute: typeof QuranSurahIdRoute
+}
+
+const QuranRouteChildren: QuranRouteChildren = {
+  QuranSurahIdRoute: QuranSurahIdRoute,
+}
+
+const QuranRouteWithChildren = QuranRoute._addFileChildren(QuranRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRoute: HomeRoute,
   OnboardingRoute: OnboardingRoute,
-  QuranRoute: QuranRoute,
+  QuranRoute: QuranRouteWithChildren,
   ReadingTestRoute: ReadingTestRoute,
   SigninRoute: SigninRoute,
   TajweedRuleIdRoute: TajweedRuleIdRoute,
