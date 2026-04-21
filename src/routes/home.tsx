@@ -53,6 +53,9 @@ function Home() {
       icon: "ﻕ",
       tone: "emerald",
       to: "/quran" as const,
+    },
+    {
+      id: "daily",
       title: "Daily recitation",
       meta: "Verse of the day",
       icon: "✦",
