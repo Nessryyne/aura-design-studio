@@ -11,12 +11,10 @@ export default defineConfig({
   vite: {
     plugins: [basicSsl()],
     server: {
-      https: true,
       allowedHosts: true,
       hmr: { clientPort: 443 },
     },
     preview: {
-      https: true,
       allowedHosts: true,
     },
   },
