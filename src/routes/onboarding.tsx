@@ -4,6 +4,7 @@ import { AppShell } from "@/components/AppShell";
 import { getSession, updateSession, type Level } from "@/lib/auth";
 
 export const Route = createFileRoute("/onboarding")({
+  ssr: false,
   head: () => ({
     meta: [
       { title: "Get started — Tajweed" },
