@@ -19,6 +19,7 @@ const SURAHS: Record<
 };
 
 export const Route = createFileRoute("/quran/$surahId")({
+  ssr: false,
   head: () => ({
     meta: [
       { title: "Surah — Tajweed" },

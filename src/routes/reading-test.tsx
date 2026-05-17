@@ -4,6 +4,7 @@ import { getSession, updateSession } from "@/lib/auth";
 import mockup from "@/assets/reading-test-mockup.png";
 
 export const Route = createFileRoute("/reading-test")({
+  ssr: false,
   head: () => ({
     meta: [
       { title: "Reading test — Tajweed" },

@@ -5,6 +5,7 @@ import { getSession, updateSession } from "@/lib/auth";
 import { TAJWEED_RULES } from "@/lib/tajweed-data";
 
 export const Route = createFileRoute("/tajweed/$ruleId")({
+  ssr: false,
   head: ({ params }) => {
     const rule = TAJWEED_RULES.find((r) => r.id === params.ruleId);
     return {

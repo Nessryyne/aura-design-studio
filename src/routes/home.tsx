@@ -5,6 +5,7 @@ import { getSession, clearSession, type Session } from "@/lib/auth";
 import { TAJWEED_RULES } from "@/lib/tajweed-data";
 
 export const Route = createFileRoute("/home")({
+  ssr: false,
   head: () => ({
     meta: [
       { title: "Home — Tajweed" },

@@ -4,6 +4,7 @@ import { AppShell } from "@/components/AppShell";
 import { getSession, updateSession } from "@/lib/auth";
 
 export const Route = createFileRoute("/tajweed/ghunnah/practice")({
+  ssr: false,
   head: () => ({
     meta: [
       { title: "Al-Ghunnah practice — Tajweed" },

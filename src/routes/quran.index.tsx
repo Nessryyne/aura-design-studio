@@ -3,6 +3,7 @@ import { AppShell } from "@/components/AppShell";
 import { getSession } from "@/lib/auth";
 
 export const Route = createFileRoute("/quran/")({
+  ssr: false,
   head: () => ({
     meta: [
       { title: "Qur'an library — Tajweed" },
